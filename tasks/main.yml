@@ -15,6 +15,7 @@
     dest: /etc/ansible/assemble_facts/{{ facts_name }}/1-{{ facts_sub_name }}.fact
     force: yes
   become: yes
+  tags: always
 
 - name: ansible facts.d dir
   file:
@@ -28,7 +29,8 @@
     path: /etc/ansible/facts.d/{{ facts_name }}.fact
     state: absent
   become: yes
-    
+  tags: always
+
 - name: assemble facts
   assemble: 
     src: /etc/ansible/assemble_facts/{{ facts_name }}/ 
@@ -38,3 +40,4 @@
 
 - name: re-read facts
   setup: filter=ansible_local
+  tags: always
