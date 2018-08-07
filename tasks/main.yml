@@ -1,0 +1,32 @@
+---
+# tasks file for ansible-role-facts
+
+- name: ansible facts.d assemble dir
+  file:
+    path: /etc/ansible/assemble_facts/{{ facts_name }}
+    state: directory
+    recurse: yes
+
+- name: create facts
+  template:
+    src: facts.fact
+    dest: /etc/ansible/assemble_facts/{{ facts_name }}/1-{{ facts_sub_name }}.fact
+    force: yes
+
+- name: ansible facts.d dir
+  file:
+    path: /etc/ansible/facts.d
+    state: directory
+
+- name: delete rpi fact
+  file:
+    path: /etc/ansible/facts.d/{{ facts_name }}.fact
+    state: absent
+    
+- name: assemble facts
+  assemble: 
+    src: /etc/ansible/assemble_facts/{{ facts_name }}/ 
+    dest: /etc/ansible/facts.d/{{ facts_name }}.fact 
+
+- name: re-read facts
+  setup: filter=ansible_local

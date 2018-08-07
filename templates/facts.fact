@@ -1,0 +1,4 @@
+[{{ facts_sub_name }}]
+{% for key, value in facts_dict.items() %}
+{{ key }}={{ value }}
+{% endfor %}

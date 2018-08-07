@@ -1,0 +1,6 @@
+---
+# defaults file for ansible-role-facts
+
+facts_name: "custom"
+facts_sub_name: "facts"
+facts_dict: []
