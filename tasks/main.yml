@@ -6,27 +6,33 @@
     path: /etc/ansible/assemble_facts/{{ facts_name }}
     state: directory
     recurse: yes
+  become: yes
 
 - name: create facts
   template:
     src: facts.fact
     dest: /etc/ansible/assemble_facts/{{ facts_name }}/1-{{ facts_sub_name }}.fact
     force: yes
+  become: yes
 
 - name: ansible facts.d dir
   file:
     path: /etc/ansible/facts.d
     state: directory
+  become: yes
 
 - name: delete rpi fact
   file:
     path: /etc/ansible/facts.d/{{ facts_name }}.fact
     state: absent
+  become: yes
     
 - name: assemble facts
   assemble: 
     src: /etc/ansible/assemble_facts/{{ facts_name }}/ 
-    dest: /etc/ansible/facts.d/{{ facts_name }}.fact 
+    dest: /etc/ansible/facts.d/{{ facts_name }}.fact
+  become: yes
+  
 
 - name: re-read facts
   setup: filter=ansible_local
