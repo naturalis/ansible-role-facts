@@ -6,11 +6,13 @@ Create custom facts
 Role Variables
 --------------
 ```
-facts_name: custom 
-facts_sub_name: facts
-facts_dict:
-  fact1: 1
-  fact2: 2
+custom_facts:
+  - section: metadata
+    settings:
+      - key: environment
+        value: production
+      - key: owner
+        value: rudi.broekhuizen@naturalis.nl
 ```
 
 Access facts
