@@ -7,7 +7,7 @@ Role Variables
 --------------
 ```
 facts_name: custom 
-facts_sub_name: subname
+facts_sub_name: facts
 facts_dict:
   fact1: 1
   fact2: 2
