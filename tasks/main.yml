@@ -1,17 +1,22 @@
 ---
 - name: Create ansible facts.d dir
+  become: yes
   file:
     path: /etc/ansible/facts.d
     state: directory
-  become: yes
+    owner: root
+    group: root
+    mode: 0755
   tags: facts
 
 - name: Create facts
+  become: yes
   template:
     src: facts.fact
     dest: /etc/ansible/facts.d/custom_facts.fact
-    force: yes
-  become: yes
+  with_subelements:
+    - "{{ facts }}"
+    - settings 
   tags: facts
 
 - name: re-read facts
