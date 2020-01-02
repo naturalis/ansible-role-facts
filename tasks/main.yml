@@ -21,7 +21,7 @@
     - settings
   tags: facts
 
-- name: re-read facts
+- name: Re-read facts
   setup: filter=ansible_local
   tags: facts
 
