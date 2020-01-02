@@ -1,4 +1,2 @@
-[{{ facts_name }}]
-{% for key, value in facts_dict.items() %}
-{{ key }}={{ value }}
-{% endfor %}
+[{{ item.0.section }}]
+{{ item.1.key }}={{ item.1.value }}
