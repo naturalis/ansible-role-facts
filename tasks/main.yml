@@ -22,4 +22,6 @@
 - name: re-read facts
   setup: filter=ansible_local
   tags: facts
+
+- debug: msg='Testing fact "{{ ansible_local.custom_facts }}"'
 ...
