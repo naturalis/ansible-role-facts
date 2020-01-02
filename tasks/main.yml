@@ -25,5 +25,5 @@
   setup: filter=ansible_local
   tags: facts
 
-- debug: msg='Testing fact "{{ ansible_local.custom_facts }}"'
+- debug: msg="{{ ansible_local.custom_facts }}"
 ...
