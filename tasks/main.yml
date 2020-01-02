@@ -9,14 +9,16 @@
     mode: 0755
   tags: facts
 
-- name: Create facts
+- name: Create custom_facts
   become: yes
-  template:
-    src: facts.fact
-    dest: /etc/ansible/facts.d/custom_facts.fact
+  ini_file:
+    path: /etc/ansible/facts.d/custom_facts.fact
+    section: "{{ item.0.section }}"
+    option: "{{ item.1.key }}"
+    value: "{{ item.1.value }}"
   with_subelements:
     - "{{ custom_facts }}"
-    - settings 
+    - settings
   tags: facts
 
 - name: re-read facts
