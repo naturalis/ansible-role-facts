@@ -17,7 +17,7 @@ custom_facts:
 
 Access facts
 
-{{ ansible_local.custom.subname.fact1 }} 
+{{ ansible_local.custom_facts }} 
 
 License
 -------
