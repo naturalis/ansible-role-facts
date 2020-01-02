@@ -5,12 +5,13 @@ Create custom facts
 
 Role Variables
 --------------
-
+```
 facts_name: custom 
 facts_sub_name: subname
 facts_dict:
   fact1: 1
   fact2: 2
+```
 
 Access facts
 
