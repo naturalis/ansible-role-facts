@@ -15,7 +15,7 @@
     src: facts.fact
     dest: /etc/ansible/facts.d/custom_facts.fact
   with_subelements:
-    - "{{ facts }}"
+    - "{{ custom_facts }}"
     - settings 
   tags: facts
 
