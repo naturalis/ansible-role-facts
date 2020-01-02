@@ -1,4 +1,4 @@
-Role Name
+ansible-role-facts
 =========
 
 Create custom facts
