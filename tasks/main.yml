@@ -6,21 +6,14 @@
   become: yes
   tags: facts
 
-- name: create facts
+- name: Create facts
   template:
     src: facts.fact
-    dest: /etc/ansible/facts.d/{{ facts_name }}/{{ facts_sub_name }}.fact
+    dest: /etc/ansible/facts.d/custom_facts.fact
     force: yes
   become: yes
   tags: facts
- 
-- name: delete rpi fact
-  file:
-    path: /etc/ansible/facts.d/{{ facts_name }}.fact
-    state: absent
-  become: yes
-  tags: facts
-  
+
 - name: re-read facts
   setup: filter=ansible_local
   tags: facts
